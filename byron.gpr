@@ -1,0 +1,46 @@
+project Byron is
+
+   package Ide is
+      for Vcs_Kind use "Git";
+      for Documentation_Dir use "doc";
+   end Ide;
+
+   for Source_Dirs use ("src");
+   for Object_Dir use "bin";
+   for Exec_Dir use ".";
+
+   package Naming is
+      for Spec_Suffix ("ada") use ".ads";
+      for Body_Suffix ("ada") use ".adb";
+      for Separate_Suffix use ".ada";
+      for Casing use "lowercase";
+      for Dot_Replacement use "-";
+   end Naming;
+
+   package Prove is
+      for Switches use ("--timeout=128", "--steps=2048", "-j4");
+   end Prove;
+
+   package Check is
+      for Default_Switches ("ada") use ("-d");
+   end Check;
+
+   package Builder is
+      for Default_Switches ("ada") use ("-j4", "-k", "-s", "-g", "-C");
+   end Builder;
+
+   package Compiler is
+      for Default_Switches ("ada") use ("-g", "-gnato", "-fstack-check", "-gnatE", "-gnata", "-gnat12", "-fcallgraph-info=su,da", "-O3", "-gnatn", "-funroll-loops", "-ftest-coverage", "-fprofile-arcs", "-ffunction-sections", 
+         "-fdata-sections");
+   end Compiler;
+
+   package Binder is
+      for Default_Switches ("ada") use ("-shared", "-E");
+   end Binder;
+
+   package Linker is
+      for Default_Switches ("ada") use ("-g", "-fprofile-generate", "-Wl,--gc-sections");
+   end Linker;
+
+end Byron;
+
