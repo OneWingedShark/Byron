@@ -5,9 +5,9 @@
 *.ali
 
 # The bin directory, and contents.
-obj/
-obj/**
-obj/*.*
+bin/
+bin/**
+bin/*.*
 
 # =========================
 # Operating System Files
