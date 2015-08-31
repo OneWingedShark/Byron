@@ -4,6 +4,11 @@
 # Ada Library Information
 *.ali
 
+# The bin directory, and contents.
+obj/
+obj/**
+obj/*.*
+
 # =========================
 # Operating System Files
 # =========================
