@@ -11,4 +11,4 @@ Generic
    with Procedure Transform( Item : in out Input_Type );
    Preprocessing  : Transform_Array:= (2..1 => <>);
    Postprocessing : Transform_Array:= (2..1 => <>);
-Procedure Byron.Transformation( Item : in out Input_Type );
+Procedure Byron.Generics.Transformation( Item : in out Input_Type );

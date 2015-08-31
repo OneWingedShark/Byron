@@ -8,4 +8,4 @@ Pragma Assertion_Policy( Check );
 Generic
    Type Input_Type(<>) is limited private;
    with Procedure Transform(Input : in out Input_Type);
-Function Byron.Transformation_Function( Input : Input_Type ) Return Input_Type;
+Function Byron.Generics.Transformation_Function( Input : Input_Type ) Return Input_Type;

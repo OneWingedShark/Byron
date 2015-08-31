@@ -13,4 +13,4 @@ Generic
    with Function Translate(Input : Input_Type) return Output_Type;
    Input_Transformation  : access Procedure( Object : in out Input_Type  ):= Null;
    Output_Transformation : access Procedure( Object : in out Output_Type ):= Null;
-Function Byron.Pass( Input : Input_Type) Return Output_Type;
+Function Byron.Generics.Pass( Input : Input_Type) Return Output_Type;

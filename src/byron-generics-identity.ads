@@ -7,5 +7,5 @@ Pragma Assertion_Policy( Check );
 
 Generic
    Type Input_Type(<>) is limited private;
-Function Byron.Identity(Input : Input_Type) return Input_Type
+Function Byron.Generics.Identity(Input : Input_Type) return Input_Type
 with Pure, Pure_Function, Inline;

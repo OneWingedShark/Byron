@@ -1,4 +1,4 @@
-Procedure Byron.Transformation( Item : in out Input_Type ) is
+Procedure Byron.Generics.Transformation( Item : in out Input_Type ) is
 begin
    for X of Preprocessing loop
       X(Item);
@@ -9,4 +9,4 @@ begin
    for X of Postprocessing loop
       X(Item);
    end loop;
-end Byron.Transformation;
+end Byron.Generics.Transformation;

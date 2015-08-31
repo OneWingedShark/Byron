@@ -1,7 +1,112 @@
 <?xml version="1.0"?>
 <Locations >
   <Project >
-    <file_marker column=" 34" line=" 2" >
+    <vfs_file >C:\Programming\Projects\Byron\byron.gpr</vfs_file>
+    <file_marker column=" 34" line=" 2">
+      <vfs_file >C:\Programming\Projects\Byron\src\byron.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_file  />
+    </file_marker>
+    <file_marker column=" 1" line=" 6">
+      <vfs_file >C:\Programming\Projects\Byron\src\byron-transformation.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_file >C:\Programming\Projects\Byron\src\byron-transformation.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_file >C:\Programming\Projects\Byron\src\byron-transformation.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 61" line=" 16">
+      <vfs_file >C:\Programming\Projects\Byron\src\byron-pass.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_file >C:\Programming\Projects\Byron\src\byron-pass.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_file  />
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_file >C:\Programming\Projects\Byron\src\byron-transformation.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 8" line=" 8">
+      <vfs_file >C:\Programming\Projects\Byron\src\byron-transformation_function.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_file >C:\Programming\Projects\Byron\src\byron-transformation_function.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 35" line=" 14">
+      <vfs_file >C:\Programming\Projects\Byron\src\byron-transformation_function.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 34" line=" 11">
+      <vfs_file >C:\Programming\Projects\Byron\src\byron-identity.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_file >C:\Programming\Projects\Byron\src\byron-identity.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 18" line=" 6">
+      <vfs_file >C:\Programming\Projects\Byron\src\byron-identity.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_file >C:\Programming\Projects\Byron\src\byron-identity.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 8" line=" 7">
+      <vfs_file >C:\Programming\Projects\Byron\src\byron-transformation.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_file >C:\Programming\Projects\Byron\src\byron-transformation.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_file >C:\Programming\Projects\Byron\src\byron-transformation.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_file >C:\Programming\Projects\Byron\src\byron-transformation_function.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 28" line=" 10">
+      <vfs_file >C:\Programming\Projects\Byron\src\byron-transformation_function.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_file  />
+    </file_marker>
+    <file_marker column=" 1" line=" 12">
+      <vfs_file >C:\Programming\Projects\Byron\src\byron-optional_transformation_function.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_file >C:\Programming\Projects\Byron\src\byron-optional_transformation_function.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_file >C:\Programming\Projects\Byron\src\byron.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_file >C:\Programming\Projects\Byron\src\byron-pass.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 23" line=" 4">
+      <vfs_file >C:\Programming\Projects\Byron\src\byron-pass.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_file >C:\Programming\Projects\Byron\src\byron-pass.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_file >C:\Programming\Projects\Byron\src\byron.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_file >C:\Programming\Projects\Byron\src\byron-transformation_function.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_file >C:\Programming\Projects\Byron\src\byron-transformation.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_file >C:\Programming\Projects\Byron\src\byron-pass.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_file >C:\Programming\Projects\Byron\src\byron-optional_transformation_function.ads</vfs_file>
+    </file_marker>
+    <file_marker current="true" column=" 1" line=" 1">
+      <vfs_file >C:\Programming\Projects\Byron\src\byron-identity.ads</vfs_file>
+    </file_marker>
+  </Project>
+  <Project >
+    <file_marker column=" 1" line=" 1" >
       <vfs_file>C:\Programming\Projects\Byron\src\byron.ads</vfs_file>
     </file_marker>
     <file_marker column=" 1" line=" 1" >
@@ -70,8 +175,47 @@
     <file_marker column=" 1" line=" 12" >
       <vfs_file>C:\Programming\Projects\Byron\src\byron-optional_transformation_function.ads</vfs_file>
     </file_marker>
-    <file_marker current="true" column=" 1" line=" 1" >
+    <file_marker column=" 1" line=" 1" >
       <vfs_file>C:\Programming\Projects\Byron\src\byron-optional_transformation_function.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_file>C:\Programming\Projects\Byron\src\byron.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_file>C:\Programming\Projects\Byron\src\byron-pass.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 23" line=" 4" >
+      <vfs_file>C:\Programming\Projects\Byron\src\byron-pass.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_file>C:\Programming\Projects\Byron\src\byron-pass.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_file>C:\Programming\Projects\Byron\src\byron.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_file>C:\Programming\Projects\Byron\src\byron-transformation_function.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_file>C:\Programming\Projects\Byron\src\byron-transformation.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_file>C:\Programming\Projects\Byron\src\byron-pass.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_file>C:\Programming\Projects\Byron\src\byron-optional_transformation_function.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_file>C:\Programming\Projects\Byron\src\byron-identity.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_file>C:\Programming\Projects\Byron\src\byron.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 27" line=" 6" >
+      <vfs_file>C:\Programming\Projects\Byron\src\byron-generics.ads</vfs_file>
+    </file_marker>
+    <file_marker current="true" column=" 1" line=" 1" >
+      <vfs_file>C:\Programming\Projects\Byron\src\byron-identity.adb</vfs_file>
     </file_marker>
   </Project>
 </Locations>
