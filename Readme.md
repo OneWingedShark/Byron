@@ -22,5 +22,10 @@ Byron project is a community-driven Ada compiler, toolchain, and system all in o
 ## Organization
 
 
-
 Currently the only available componenets are a set of generic subprograms: a "transformation" which applies alterations to its input, "translation" which takes one type and returns another, and a "pass" which applies specified transformations to the input and output of a translation.
+
+
+----
+
+
+If you're interested in helping,  you can fill out [this form](https://docs.google.com/forms/d/1qLb8P8fMzbZXcsTEVCOw7Fcv4rkt9nXrkztWJsdnPeU/viewform?usp=send_form) to get in contact with us and let us know where you'd be interested in helping out,
