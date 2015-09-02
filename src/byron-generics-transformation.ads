@@ -3,7 +3,8 @@ Pragma Assertion_Policy( Check );
 
 -- Byron.Transformation is a generic procedure intended to apply some operation
 -- to a given type, possibly with pre- and post-processing.
-
+--
+-- NOTE: A transformation has the same type for both input and output.
 Generic
    Type Input_Type(<>) is limited private;
    Type Transform_Array is Array(Positive range <>) of

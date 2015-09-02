@@ -2,9 +2,8 @@ Pragma Ada_2012;
 Pragma Assertion_Policy( Check );
 
 -- Byron.Pass is a generic function intended to encapsulate the idea of a
--- compiler pass; it does this by applying a translation -- translations
+-- compiler pass; it does this by applying a translation -- transformations
 -- are applied to the input (and the output), if given.
-
 Generic
    Type Input_Type(<>)  is limited private;
    Type Output_Type(<>) is limited private;

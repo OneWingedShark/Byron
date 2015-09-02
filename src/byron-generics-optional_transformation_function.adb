@@ -8,6 +8,7 @@ begin
    if Transformation /= Null then
       -- This is needed because we are operation on the most general types,
       -- LIMITED PRIVATE, meaning that we do not have access to assignment.
+      -- We can, however, use a function to initalize an object's value.
       Transform:
       declare
          Object : Input_Type := Obj(Item);
