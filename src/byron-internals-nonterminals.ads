@@ -233,6 +233,59 @@ Package Byron.Internals.Nonterminals is
    nt_exponent,
    nt_base,
    nt_based_numeral,
-   nt_extended_digit                   : aliased Class := Get (P_Prime);
+   nt_extended_digit,
+
+   nt_pragma,
+   nt_pragma_argument_association,
+   nt_type_declaration,
+   nt_incomplete_type_declaration,
+   nt_private_type_declaration,
+   nt_private_extension_declaration,
+   nt_full_type_declaration,
+   nt_task_type_declaration,
+   nt_protected_type_declaration,
+   nt_type_definition,
+   nt_enumeration_type_definition,
+   nt_integer_type_definition,
+   nt_real_type_definition,
+   nt_record_type_definition,
+   nt_derived_type_definition,
+   nt_subtype_declaration,
+   nt_object_declaration,
+   nt_single_task_declaration,
+   nt_single_protected_declaration,
+   nt_ancestor_subtype_indication,
+   nt_enumeration_literal_specification,
+   nt_floating_point_definition,
+   nt_ordinary_fixed_point_definition,
+   nt_decimal_fixed_point_definition,
+   nt_record_definition,
+   nt_record_extension_part,
+   nt_task_definition,
+   nt_protected_definition,
+   nt_component_item,
+   nt_variant_part,
+   nt_task_item,
+   nt_protected_operation_declaration,
+   nt_protected_element_declaration,
+   nt_component_declaration,
+   nt_variant,
+   nt_entry_declaration,
+   nt_abstract_subprogram_declaration,
+   nt_renaming_declaration,
+   nt_accept_alternative,
+   nt_terminate_alternative,
+   nt_with_clause,
+   nt_exception_declaration,
+   nt_generic_subprogram_declaration,
+   nt_generic_package_declaration,
+   nt_generic_formal_part,
+   nt_restriction_pragma
+
+
+
+
+
+   : aliased Class := Get (P_Prime);
 
 End Byron.Internals.Nonterminals;
