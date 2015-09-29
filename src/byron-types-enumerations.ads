@@ -59,7 +59,7 @@ Package Byron.Types.Enumerations with Pure is
       --  Syntax error
       Bad_Token,
 
-      -- FOF
+      -- EOF
       End_of_File,
 
 	  ------------------
@@ -68,11 +68,18 @@ Package Byron.Types.Enumerations with Pure is
 
       P_Prime,
       p_Compilation_Unit,
-      p_xx
+      p_xx --...
      );
 
 
-   Subtype Terminal_Token is Ada_Token range Ada_Token'First..End_of_File;
+--   Subtype Terminal_Token is Ada_Token range Ada_Token'First..End_of_File;
 
    Function Image( Input : Ada_Token ) return String;
+
+   First_Terminal : Constant Ada_Token;
+   Last_Terminal  : Constant Ada_Token;
+
+Private
+   First_Terminal : Constant Ada_Token := Ada_Token'First;
+   Last_Terminal  : Constant Ada_Token := End_of_File;
 End Byron.Types.Enumerations;
