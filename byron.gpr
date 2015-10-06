@@ -2,12 +2,12 @@ with "opentoken.gpr";
 
 project Byron is
 
-   type Build_Kind is
-      ("default");
    for Source_Dirs use ("src");
    for Object_Dir use "obj";
    for Exec_Dir use ".";
-   OPENTOKEN_BUILD : Build_Kind := external ("OPENTOKEN_BUILD");
+   type Build_Kind is
+      ("default");
+   Opentoken_Build : Build_Kind := external ("OPENTOKEN_BUILD");
 
    package Ide is
       for Vcs_Kind use "Git";
@@ -38,10 +38,10 @@ project Byron is
       for Default_Switches ("ada") use ("-g", "-gnato", "-fstack-check", "-gnatE", "-gnata", "-gnat12", "-fcallgraph-info=su,da", "-O3", "-gnatn", "-funroll-loops", "-ftest-coverage", "-fprofile-arcs", "-ffunction-sections", 
          "-fdata-sections");
 
-      case OPENTOKEN_BUILD is
+      case Opentoken_Build is
 
          when "default" =>
-            for Default_Switches ("ada") use ("-g", "-gnato", "-fstack-check", "-gnatE", "-gnata", "-gnat12", "-O3", "-gnatn", "-funroll-loops", "-ffunction-sections", "-fdata-sections");
+            for Default_Switches ("ada") use ("-g", "-gnato", "-fstack-check", "-gnatE", "-gnata", "-gnat12", "-O3", "-gnatn", "-funroll-loops", "-ffunction-sections", "-fdata-sections", "-gnateE");
       end case;
    end Compiler;
 

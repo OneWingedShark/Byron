@@ -5,9 +5,9 @@ Package Byron.Types.Enumerations with Pure is
 
    type Ada_Token is
      (
-	  ------------------
-	  -- NONTERMINALS --
-	  ------------------
+	  ---------------
+	  -- TERMINALS --
+	  ---------------
 
       --  Reserved words ARM 2.9 (2)
       Abort_T, Abs_T, Abstract_T, Accept_T, Access_T, Aliased_T, All_T, And_T, Array_T, At_T,

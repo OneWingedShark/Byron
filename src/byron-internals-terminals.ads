@@ -14,6 +14,9 @@ Byron.Tokens;
 -- symbols for the grammar.
 Package Byron.Internals.Terminals is
 
+   -- NOTES: The Class type here is from Byron.Tokens, which is an instantiation
+   --        of OpenToken.Token.Enumerated.
+
    t_Package	: aliased Class := Get(Package_T);
 
 

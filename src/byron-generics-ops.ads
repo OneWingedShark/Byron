@@ -2,7 +2,6 @@ Pragma Ada_2012;
 Pragma Assertion_Policy( Check );
 
 With
---Byron.Internals.Actions,
 Byron.Types.Enumerations,
 OpenToken.Token.Enumerated.List,
 OpenToken.Token.Enumerated.Nonterminal,
@@ -19,7 +18,7 @@ Generic
    with package Nonterminal     is new Tokens.Nonterminal(Token_List);
    with package Production      is new OpenToken.Production(Tokens, Token_List, Nonterminal);
    with package Production_List is new Production.List(<>);
-Package Byron.Generics.Ops is
+Package Byron.Generics.Ops with Elaborate_Body is
    Use Byron.Types.Enumerations;
 
    -- Nonterminal helper-types.
@@ -62,11 +61,27 @@ Package Byron.Generics.Ops is
                  Right : in nt_Access) return Token_List.Instance
      is ( Token_List."&"(Nonterminal.Class(Left.All),Nonterminal.Class(Right.All)) ) with Inline;
 
+
+
    -----------
    -- To Do --
    -----------
    -- Make "production-factories" for:
    --   * Optional
-   --   * Separated_List
+   --   * X-Separated_List
+   --   * X-Terminated_List
+
+   Generic
+      Type Item_Type     (<>) is private;
+      Type Separator_Type(<>) is private;
+      Item         : Item_Type;
+      Separator    : Separator_Type;
+      Item_Action,
+      List_Action  : Tokens.Action:= Null;
+      with Function "&"(Left : Item_Type; Right : Separator_Type) return Token_List.Instance is <>;
+      with Function "<="(Left : Nonterminal.Class; Right : Token_List.Instance) return Production.Instance is <>;
+      with function "+"(Right : Item_Type) return Token_List.Instance is <>;
+   Function Separated_List Return Production_List.Instance;
+
 
 End Byron.Generics.Ops;
