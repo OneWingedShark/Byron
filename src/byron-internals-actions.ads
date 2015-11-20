@@ -2,6 +2,7 @@ Pragma Ada_2012;
 Pragma Assertion_Policy( Check );
 
 with
+ada.strings.Maps.Constants,
 Byron.Tokens,
 Byron.Internals.Ops;
 
