@@ -1,16 +1,21 @@
 pragma Wide_Character_Encoding(UTF8);
 
 with
+-- Lexington dependencies; mainlt for printing/debugging.
 Lexington.Aux,
-Lexington.Tokens,
 Lexington.Token_Vector_Pkg,
 
+-- Actual Byron dependencies.
 Byron.Lexer,
 Byron.Reader,
 Byron.Internals.Types,
+
+-- Wide_Wide_Text_IO for debugging.
 Ada.Wide_Wide_Text_IO.Text_Streams;
 
 Procedure Compiler is
+
+   -- Returns the file "test.adb", already opened.
    Function Test return Ada.Wide_Wide_Text_IO.File_Type is
       use Ada.Wide_Wide_Text_IO;
    Begin
@@ -19,7 +24,7 @@ Procedure Compiler is
       end return;
    End Test;
 
-
+   -- A visual separator.
    Page_Break : constant Wide_Wide_String:=
      "------------------------------------------";
 
@@ -30,22 +35,24 @@ Procedure Compiler is
    Tokens : Lexington.Token_Vector_Pkg.Vector;
 Begin
 
-   declare
+   TOKENIZING:
+   Declare
       Use Byron.Internals.Types;
       File_Stream : constant Stream_Class := Stream_Class(Stream);
-   begin
+   Begin
       Ada.Wide_Wide_Text_IO.Put_Line( Page_Break );
       Tokens:= Byron.Lexer( Input => Byron.Reader(File_Stream) );
-   end;
+   End TOKENIZING;
 
    -- Print the tokens!
-   for Token of Tokens loop
+   PRINTING:
+   For Token of Tokens loop
       declare
          use all type Lexington.Aux.Token_Pkg.Token;
       begin
          Ada.Wide_Wide_Text_IO.Put_Line( Lexington.Aux.Token_Pkg.Print(Token) );
       end;
-   end loop;
+   End Loop PRINTING;
 
    -- Clean-up!
    Ada.Wide_Wide_Text_IO.Close(File);

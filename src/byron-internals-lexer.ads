@@ -28,27 +28,27 @@ Byron.Internals.Types,
 Lexington.Aux;
 
 Procedure Byron.Internals.Lexer is new Byron.Generics.Transformation(
-   --Preprocessing   =>  <>,
    Transformation_Type => Token_Transformation,
    Input_Type          => Lexington.Token_Vector_Pkg.Vector,
    Transform_Array     => Token_Transformation_Array,
    Transform           => Default,
-   Postprocessing  => (P1'Access,
-                       P2'Access,
-                       P3'Access,
-                       P4'Access,
-                       P5'Access,
-                       P6'Access,
-                       P7'Access,
-                       P8'Access,
-                       P9'Access,
-                       P10'Access,
-                       P11'Access,
-                       P12'Access,
-                       P13'Access,
-                       P14'Access,
-                       P15'Access,
-                       P16'Access,
-                       P17'Access
+   Postprocessing  => (
+         P1'Access,		-- Generates WHITESPACE.
+         P2'Access,		-- Generates End_Of_Line.
+         P3'Access,		-- Generatea Comments on TEXT starting with --
+         P4'Access,		-- Generates single-character delimeters.
+         P5'Access,		-- Generates double-character delimiters.
+         P6'Access,		-- Generates li_Character for ONLY apostrophe and quote.
+         P7'Access,		-- Generates string literals.
+         P8'Access,		-- Generates Comments.
+         P9'Access,		-- Generates Keywords.
+         P10'Access,		-- Generates Identifiers.
+         P11'Access,		-- Generates Tick.
+         P12'Access,		-- Character literals.
+         P13'Access,		-- Generates integer literals, non-based.
+         P14'Access,		-- Generates float literals, non-based.
+         P15'Access,		-- Generates based integers.
+         P16'Access,		-- Generates based floats.
+         P17'Access		-- Check for invalid tokens.
                       )
   );
