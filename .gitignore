@@ -1,3 +1,6 @@
+# Test file
+test.adb
+
 # Object file
 *.o
 
@@ -36,6 +39,8 @@ Temporary Items
 
 # Windows
 # =========================
+
+*.exe
 
 # Windows image file caches
 Thumbs.db

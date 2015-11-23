@@ -1,0 +1,84 @@
+Pragma Ada_2012;
+Pragma Assertion_Policy( Check );
+
+With
+Lexington.Search,
+Ada.Strings.Maps,
+Ada.Strings.Wide_Wide_Unbounded,
+Ada.Containers.Indefinite_Vectors,
+Ada.Characters.Conversions;
+
+Procedure Lexington.Aux.P6(Data : in out Token_Vector_Pkg.Vector) is
+   use type Ada.Containers.Count_Type;
+   use Ada.Strings.Wide_Wide_Unbounded, Ada.Characters.Conversions;
+
+   Type Endpoint( Stop, Start : Positive ) is null record;
+   Package Stack_Pkg is new Ada.Containers.Indefinite_Vectors(
+      Index_Type   => Positive,
+      Element_Type => Endpoint
+     );
+
+   Function Collect( Endpoints : Endpoint ) return Token is
+      Working : Unbounded_Wide_Wide_String;
+   begin
+      For Index in Endpoints.Start+1..Endpoints.Stop-1 loop
+         Append(Working, Lexeme(Data(Index)));
+      end loop;
+
+      return Make_Token(li_String, To_Wide_Wide_String(Working));
+   end Collect;
+
+
+   No_Tick    : Boolean:= True;
+   Collecting : Boolean:= False;
+   Stop_Point : Positive:= 1;
+   Endpoints  : Stack_Pkg.Vector;
+
+
+   Package TP renames Token_Pkg;
+   Subtype Scan_Range is Natural Range Data.First_Index..Data.Last_Index;
+Begin
+   if Data.Length = 0 then
+     return;
+   end if;
+
+
+   For Index in reverse Scan_Range loop
+      COLLECT_INDICES:
+      Declare
+         Element : Token     renames Data( Index );
+         ID      : Token_ID  renames TP.ID( Element );
+         Quote   : constant Boolean := ID = ch_Quote;
+         Tick    : constant Boolean := ID = ch_Apostrophy;
+         Reset   : constant Boolean := ID = End_of_Line or ID = Comment;
+      Begin
+         if Collecting and not Quote then
+            null;
+         elsif Collecting and Quote then
+            Collecting:= not Collecting;
+            Stack_Pkg.Append( Endpoints, Endpoint'(Start=> Index, Stop => Stop_Point) );
+         elsif No_Tick and Quote then
+            Collecting:= True;
+            Stop_Point:= Index;
+         elsif Tick then
+            No_Tick:= False;
+         elsif Reset then
+            No_Tick:= True;
+         end if;
+      End COLLECT_INDICES;
+   end loop;
+
+   for Run of Endpoints loop
+      declare
+         New_Item : Token := Collect(Run);
+      begin
+         Data.Delete(
+            Index => Run.Start,
+            Count => Ada.Containers.Count_Type(Run.Stop-Run.Start)
+           );
+         Data.Insert(Before => Run.Start, New_Item => New_Item);
+      end;
+   end loop;
+
+
+End Lexington.Aux.P6;

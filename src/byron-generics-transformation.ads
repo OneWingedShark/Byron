@@ -7,8 +7,8 @@ Pragma Assertion_Policy( Check );
 -- NOTE: A transformation has the same type for both input and output.
 Generic
    Type Input_Type(<>) is limited private;
-   Type Transform_Array is Array(Positive range <>) of
-        not null access procedure (Item : in out Input_Type);
+   Type Transformation_Type is not null access procedure (Item : in out Input_Type);
+   Type Transform_Array is Array(Positive range <>) of Transformation_Type;
    with Procedure Transform( Item : in out Input_Type );
    Preprocessing  : Transform_Array:= (2..1 => <>);
    Postprocessing : Transform_Array:= (2..1 => <>);

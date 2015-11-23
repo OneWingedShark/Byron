@@ -3,8 +3,6 @@ project Byron is
    for Source_Dirs use ("src/**");
    for Object_Dir use "obj";
    for Exec_Dir use ".";
-   type Build_Kind is
-      ("default");
 
    package Ide is
       for Vcs_Kind use "Git";
@@ -29,6 +27,7 @@ project Byron is
 
    package Builder is
       for Default_Switches ("ada") use ("-j4", "-k", "-s", "-g", "-C");
+      for Executable ("compiler.adb") use "Byron.exe";
    end Builder;
 
    package Compiler is
@@ -43,6 +42,8 @@ project Byron is
    package Linker is
       for Default_Switches ("ada") use ("-g", "-fprofile-generate", "-Wl,--gc-sections");
    end Linker;
+
+   for Main use ("compiler.adb");
 
 end Byron;
 
