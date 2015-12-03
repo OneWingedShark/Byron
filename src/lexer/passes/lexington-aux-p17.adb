@@ -6,6 +6,7 @@ Ada.Containers.Vectors;
 
 Procedure Lexington.Aux.P17(Data : in out Token_Vector_Pkg.Vector) is
 
+   -- Filters out all tokens of the given ID.
    Procedure Filter( ID : Token_ID ) is
    begin
       for Index in reverse Data.First_Index..Data.Last_Index loop
@@ -15,6 +16,7 @@ Procedure Lexington.Aux.P17(Data : in out Token_Vector_Pkg.Vector) is
       end loop;
    End Filter;
 
+   -- Converts all tokens of Which_ID to tokens of Target_ID.
    Procedure Translate( Which_ID, Target_ID : Token_ID ) is
       Procedure Translate (Position : Token_Vector_Pkg.Cursor) is
          Package TVP renames Token_Vector_Pkg;
@@ -36,7 +38,7 @@ Procedure Lexington.Aux.P17(Data : in out Token_Vector_Pkg.Vector) is
       Data.Iterate( Translate'Access );
    End Translate;
 
-
+   -- Performs validation to ensure that all tokens in the stream are emittable.
    procedure Validate(Position : Token_Vector_Pkg.Cursor) is
       Package TVP renames Token_Vector_Pkg;
       ID : Token_ID renames Token_Pkg.ID( TVP.Element( Position ) );
@@ -69,5 +71,6 @@ Begin
    Translate( ch_Semicolon,    ns_Semicolon    );
    Translate( ch_Period,       ns_Period       );
 
-   --Data.iterate( Validate'Access );
+-- THE FOLLOWING IS COMMENTED OUT FOR TESTING/DEVELOPMENT PURPOSES:
+--Data.iterate( Validate'Access );
 End Lexington.Aux.P17;
