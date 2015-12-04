@@ -5,6 +5,9 @@ With
 Byron.Internals.Types,
 Byron.Generics.Transformation,
 Lexington.Token_Vector_Pkg,
+Lexington.Aux.P20,
+Lexington.Aux.P19,
+Lexington.Aux.P18,
 Lexington.Aux.P17,
 Lexington.Aux.P16,
 Lexington.Aux.P15,
@@ -35,7 +38,7 @@ Procedure Byron.Internals.Lexer is new Byron.Generics.Transformation(
    Postprocessing  => (
          P1'Access,		-- Generates WHITESPACE.
          P2'Access,		-- Generates End_Of_Line.
-         P3'Access,		-- Generatea Comments on TEXT starting with --
+         P3'Access,		-- Generates Comments on TEXT starting with --
          P4'Access,		-- Generates single-character delimeters.
          P5'Access,		-- Generates double-character delimiters.
          P6'Access,		-- Generates li_Character for ONLY apostrophe and quote.
@@ -49,6 +52,9 @@ Procedure Byron.Internals.Lexer is new Byron.Generics.Transformation(
          P14'Access,		-- Generates float literals, non-based.
          P15'Access,		-- Generates based integers.
          P16'Access,		-- Generates based floats.
-         P17'Access		-- Check for invalid tokens.
+         P17'Access,		-- Generates comments passable from the lexer.
+         P18'Access,		-- Generates separaters passable from the lexer.
+         P19'Access,		-- Filters out text-artifact tokens.
+         P20'Access		-- Check for invalid tokens.
                       )
   );
