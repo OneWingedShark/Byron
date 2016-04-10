@@ -1,18 +1,13 @@
 # The Byron Project
 
-The
-
-Byron project is a community-driven Ada compiler, toolchain, and system all in one; its aims are:
+The Byron project is a community-driven Ada compiler, toolchain, and system all in one; its aims are:
 
 
 
-1. To provide a freely available and freely usable implementation of the Ada 2012 programming language.
-
-2. To provide a similarly free set of tools for the above.
-
-3. To provide a common core for the community to build tools upon, and
-
-4. To provide these services in a general form so that they might be extended as needed.
+0. To provide a freely available and freely usable implementation of the Ada 2012 programming language.
+0. To provide a similarly free set of tools for the above.
+0. To provide a common core for the community to build tools upon, and
+0. To provide these services in a general form so that they might be extended as needed.
 
 
 
@@ -28,4 +23,35 @@ Currently the only available componenets are a set of generic subprograms: a "tr
 ----
 
 
-If you're interested in helping,  you can fill out [this form](https://docs.google.com/forms/d/1qLb8P8fMzbZXcsTEVCOw7Fcv4rkt9nXrkztWJsdnPeU/viewform?usp=send_form) to get in contact with us and let us know where you'd be interested in helping out,
+## Progress
+
+
+Current Standing of the compiler:
+
+[✓] Lexing
+
+[✍] Parsing
+
+[✗] Semantic Analysis
+
+[✗] Optimizations
+
+[✗] Code Generation
+
+
+#### Legend
+
+✗ — Unstarted.
+
+✍ — In-progress.
+
+✓ — Done; but not formally verified.
+
+✨ — Done &  Formally Verified.
+
+----
+
+## Voulenteering
+
+
+If you're interested in helping,  you can fill out [this form](https://docs.google.com/forms/d/1qLb8P8fMzbZXcsTEVCOw7Fcv4rkt9nXrkztWJsdnPeU/viewform?usp=send_form) to get in contact with us and let us know where you'd be interested in helping out.
