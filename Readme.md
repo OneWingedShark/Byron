@@ -28,26 +28,19 @@ Currently the only available componenets are a set of generic subprograms: a "tr
 
 Current Standing of the compiler:
 
-[✓] Lexing
-
-[✍] Parsing
-
-[✗] Semantic Analysis
-
-[✗] Optimizations
-
+[✓] Lexing  
+[✍] Parsing  
+[✗] Semantic Analysis  
+[✗] Optimizations  
 [✗] Code Generation
 
 
 #### Legend
 
-✗ — Unstarted.
-
-✍ — In-progress.
-
-✓ — Done; but not formally verified.
-
-✨ — Done &  Formally Verified.
+✗ — Unstarted.  
+✍ — In-progress.  
+✓ — Done; but not formally verified.  
+✨ — Done & Formally Verified.
 
 ----
 
