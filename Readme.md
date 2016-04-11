@@ -44,7 +44,7 @@ Current Standing of the compiler:
 
 ----
 
-## Voulenteering
+## Volunteering
 
 
 If you're interested in helping,  you can fill out [this form](https://docs.google.com/forms/d/1qLb8P8fMzbZXcsTEVCOw7Fcv4rkt9nXrkztWJsdnPeU/viewform?usp=send_form) to get in contact with us and let us know where you'd be interested in helping out.
