@@ -16,7 +16,7 @@ Procedure Lexington.Aux.P3(Data : in out Token_Vector_Pkg.Vector) is
       Textual    : constant Boolean := ID(Item) = TEXT;
       Big_Enough : constant Boolean := Value'Length >= 2;
       First      : constant Positive:= Value'First;
-      Second     : Positive renames Positive'Succ(First);
+      Second     : constant Positive:= Positive'Succ(First);
    Begin
       Return Textual and then Big_Enough and then
         (Value(First) = '-' and Value(Second) = '-');

@@ -35,8 +35,8 @@ Procedure Lexington.Aux.P5(Data : in out Token_Vector_Pkg.Vector) is
       
       
       Procedure Replace_With(ID : Token_ID) is
-         Deletion_Index : Positive renames Positive'Succ(Index);
-         Lexeme : constant Wide_Wide_String:= (1 => Primary, 2 => Secondary);
+         Deletion_Index : Constant Positive := Positive'Succ(Index);
+         Lexeme : Constant Wide_Wide_String := (1 => Primary, 2 => Secondary);
       begin
          Data.Replace_Element(Position, Lexington.Aux.Token_Pkg.Make_Token(ID,Lexeme) );
          Mem.Append( Deletion_Index );
