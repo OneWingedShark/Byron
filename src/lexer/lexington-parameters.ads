@@ -14,6 +14,9 @@ Package Lexington.Parameters is --with Pure is
    -------------
 
    Type Token is new Lexington.Token;
+
+   Function "+"        ( Item : Lexington.Token ) return Token;
+   Function "+"        ( Item : Token ) return Lexington.Token;
    Function Make_Token ( ID : Token_ID; Value : Wide_Wide_String ) return Token;
    Function ID         ( Item : Token ) return Token_ID;
    Function Print      ( Item : Token ) return Wide_Wide_String;
@@ -50,5 +53,10 @@ Private
        TAB & Token_ID' Wide_Wide_Image(ID(Item)) & CRLF &
        Tab & Open_Bracket & Lexeme(Item) & Close_Bracket
      );
+
+    Function "+"        ( Item : Lexington.Token ) return Token is
+      ( Token(Item) );
+    Function "+"        ( Item : Token ) return Lexington.Token is
+      ( Lexington.Token(Item) );
 
 End Lexington.Parameters;

@@ -5,6 +5,6 @@ Pragma Assertion_Policy( Check );
 -- access to a transformation, applies it if appropriate; if it is null then the
 -- identity is applied instead.
 Generic
-   Type Input_Type(<>) is limited private;
+   Type Input_Type(<>) is private;
    Transformation : access Procedure( Object : in out Input_Type );
 Function Byron.Generics.Optional_Transformation_Function( Item : Input_Type ) return Input_Type;

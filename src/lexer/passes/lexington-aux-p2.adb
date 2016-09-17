@@ -6,6 +6,8 @@ Ada.Characters.Wide_Wide_Latin_1;
 
 -- Normalizes line endings.
 Procedure Lexington.Aux.P2(Data : in out Token_Vector_Pkg.Vector) is
+    Use Lexington.Aux.Token_Pkg;
+
    Package L renames Ada.Characters.Wide_Wide_Latin_1;
 
    Function Is_EOL( Index : Positive; CR : Boolean ) return Boolean is

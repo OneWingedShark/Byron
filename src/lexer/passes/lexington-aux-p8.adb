@@ -10,6 +10,7 @@ Use
 Lexington.Search;
 
 Procedure Lexington.Aux.P8(Data : in out Token_Vector_Pkg.Vector) is
+    Use Lexington.Aux.Token_Pkg;
 
    Type Pair(Start, Stop : Positive) is null record;
 

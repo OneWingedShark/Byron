@@ -6,6 +6,8 @@ Ada.Characters.Conversions,
 Ada.Strings.Equal_Case_Insensitive;
 
 Procedure Lexington.Aux.P9(Data : in out Token_Vector_Pkg.Vector) is
+    Use Lexington.Aux.Token_Pkg;
+
    subtype Keyword is Token_ID range kw_Abort..kw_Xor;
 
    Function To_String(Input : Wide_Wide_String; Sub : Character := ' ') return String

@@ -5,6 +5,7 @@ with
 Lexington.Search;
 
 Procedure Lexington.Aux.P11(Data : in out Token_Vector_Pkg.Vector) is
+    Use Lexington.Aux.Token_Pkg;
 
    Start_Index : Natural := Data.First_Index;
    Found_Index : Natural;

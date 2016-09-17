@@ -5,6 +5,6 @@ Pragma Assertion_Policy( Check );
 -- procedure and allows it to be used as a function; it is intended to be used
 -- by Byron.Pass.
 Generic
-   Type Input_Type(<>) is limited private;
+   Type Input_Type(<>) is private;
 Function Byron.Generics.Identity(Input : Input_Type) return Input_Type
 with Pure, Pure_Function, Inline;

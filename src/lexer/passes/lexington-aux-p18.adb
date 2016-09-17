@@ -5,6 +5,7 @@ with
 Ada.Containers.Vectors;
 
 Procedure Lexington.Aux.P18(Data : in out Token_Vector_Pkg.Vector) is
+    Use Lexington.Aux.Token_Pkg;
 
    -- Converts all tokens of Which_ID to tokens of Target_ID.
    Procedure Translate( Which_ID, Target_ID : Token_ID ) is

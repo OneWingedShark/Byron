@@ -9,7 +9,7 @@ Ada.Strings.Wide_Wide_Unbounded;
 
 -- Handle comments starting a TEXT token.
 Procedure Lexington.Aux.P3(Data : in out Token_Vector_Pkg.Vector) is
-   use Ada.Strings.Wide_Wide_Unbounded;
+   use Ada.Strings.Wide_Wide_Unbounded, Lexington.Aux.Token_Pkg;
 
    Function Is_Comment( Item : Token ) return Boolean is
       Value      : Wide_Wide_String renames Lexeme(Item);

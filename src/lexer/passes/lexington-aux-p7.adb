@@ -2,10 +2,13 @@ Pragma Ada_2012;
 Pragma Assertion_Policy( Check );
 
 With
+Ada.Containers,
 Ada.Strings.Wide_Wide_Unbounded,
 Lexington.Search;
 
 Procedure Lexington.Aux.P7(Data : in out Token_Vector_Pkg.Vector) is
+    Use Lexington.Aux.Token_Pkg;
+
    Function Check(Index : Positive; Value : Token_ID) return Boolean is
      (ID(Data(Index)) = Value) with Inline;
 

@@ -24,6 +24,8 @@ Procedure Lexington.Aux.P1(Data : in out Token_Vector_Pkg.Vector) is
    NOT_No_Break_Space : M.Wide_Wide_Character_Set := NOT To_Set( L.No_Break_Space );
    Non_Whitespace_Set : M.Wide_Wide_Character_Set :=
      M.Wide_Wide_Constants.Graphic_Set and NOT_No_Break_Space and NOT_Space;
+
+    Use Lexington.Aux.Token_Pkg;
 Begin
    For Item of Data loop
       if ID(Item) = Text then

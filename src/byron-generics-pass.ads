@@ -5,8 +5,8 @@ Pragma Assertion_Policy( Check );
 -- compiler pass; it does this by applying a translation -- transformations
 -- are applied to the input (and the output), if given.
 Generic
-   Type Input_Type(<>)  is limited private;
-   Type Output_Type(<>) is limited private;
+   Type Input_Type(<>)  is private;
+   Type Output_Type(<>) is private;
    with Function "="(Left, Right : Input_Type ) return Boolean is <>;
    with Function "="(Left, Right : Output_Type) return Boolean is <>;
    with Function Translate(Input : Input_Type) return Output_Type;

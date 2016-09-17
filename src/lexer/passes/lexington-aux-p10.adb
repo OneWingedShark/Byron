@@ -5,6 +5,7 @@ with
 Ada.Wide_Wide_Characters.Handling;
 
 Procedure Lexington.Aux.P10(Data : in out Token_Vector_Pkg.Vector) is
+    Use Lexington.Aux.Token_Pkg;
 
     Subtype Identifier is Wide_Wide_String
     with Dynamic_Predicate => Is_Valid( Identifier );
