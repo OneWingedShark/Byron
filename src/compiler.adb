@@ -16,24 +16,25 @@ Ada.Wide_Wide_Text_IO.Text_Streams;
 Procedure Compiler is
 
    -- Returns the file "test.adb", already opened.
-   Function Test return Ada.Wide_Wide_Text_IO.File_Type is
+   Function Test_File return Ada.Wide_Wide_Text_IO.File_Type is
       use Ada.Wide_Wide_Text_IO;
    Begin
       return Result : File_Type do
          Open( Result, Name => "test.adb", Mode => In_File);
       end return;
-   End Test;
+   End Test_File;
 
    -- A visual separator.
    Page_Break : constant Wide_Wide_String:=
      "------------------------------------------";
 
-   File   : Ada.Wide_Wide_Text_IO.File_Type:= Test;
+   File   : Ada.Wide_Wide_Text_IO.File_Type:= Test_File;
    Stream : aliased Ada.Wide_Wide_Text_IO.Text_Streams.Stream_Access:=
      Ada.Wide_Wide_Text_IO.Text_Streams.Stream(File);
 
    Tokens : Lexington.Token_Vector_Pkg.Vector;
 Begin
+
 
    TOKENIZING:
    Declare
