@@ -5,7 +5,7 @@ Package Byron.Internals.SPARK.Pure_Types
 with Pure, Elaborate_Body, SPARK_Mode => On is
 
     -- Represents a valid identifier.
-    Type Identifier is new String
+    Type Identifier is new Wide_Wide_String
       with Dynamic_Predicate =>
     -- Validation rules:
     -- #1 - Identifier cannot be the empty-string.
