@@ -3,6 +3,7 @@ test.adb
 
 # Object file
 *.o
+*.obj
 
 # Ada Library Information
 *.ali
@@ -11,6 +12,11 @@ test.adb
 bin/
 bin/**
 bin/*.*
+
+# The object directory, and contents.
+obj/
+obj/**
+obj/*.*
 
 # =========================
 # Operating System Files
