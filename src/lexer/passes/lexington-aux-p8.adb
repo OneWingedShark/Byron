@@ -14,7 +14,7 @@ Procedure Lexington.Aux.P8(Data : in out Token_Vector_Pkg.Vector) is
 
    Type Pair(Start, Stop : Positive) is null record;
 
-   Package List_Pkg is new Ada.containers.Indefinite_Vectors(Positive,Pair);
+   Package List_Pkg is new Ada.Containers.Indefinite_Vectors(Positive,Pair);
 
    Pair_List   : List_Pkg.Vector;
    Start_Index : Natural := Data.First_Index;

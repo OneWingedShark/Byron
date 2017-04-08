@@ -7,7 +7,8 @@ Unchecked_Conversion;
 Generic
    Type Token_ID is (<>);
 Package Lexington.Parameters is --with Pure is
-   Pragma Pure( Lexington.Parameters );
+    Pragma Pure( Lexington.Parameters );
+    Pragma SPARK_Mode( On );
 
    -------------
    --  TOKEN  --

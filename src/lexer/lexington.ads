@@ -3,9 +3,10 @@ Pragma Assertion_Policy( Check );
 
 With
 Ada.Strings,
-Ada.Characters.Wide_Wide_Latin_1;
+Ada.Characters.Wide_Wide_Latin_1
+;
 
-Package Lexington with Pure is
+Package Lexington with Pure, SPARK_Mode => On is
 --     use Ada.Strings.UTF_Encoding;
 
    ------------------
@@ -30,14 +31,14 @@ Package Lexington with Pure is
 
    -- Null Token represents the termination of lexing; it is NOT equivelant to
    -- EOF or ASCII.NUL or the empty string.
-   Null_Token : Constant Token;
+--     Null_Token : Constant Token;
 
 
    ID_For_Null_Token : Constant Natural;
    ID_For_Text_Token : Constant Natural;
 Private
 
-   Type Token( Length : Natural; ID : Natural ) is record
+   Type Token( Length, ID : Natural ) is record
       Value : Wide_Wide_String(1..Length);
    end record;
 
@@ -67,12 +68,17 @@ Private
    ID_For_Null_Token : Constant Natural := Natural'Last;
    ID_For_Text_Token : Constant Natural := Natural'Pred( ID_For_Null_Token );
 
-   Null_Token : Constant Token:= (ID => ID_For_Null_Token, Length => 0, Value => "");
+    Package Internal with SPARK_Mode => Off is
+	Function Print_Number( Item : Natural ) return Wide_Wide_String
+	  renames Natural'Wide_Wide_Image;
+    End Internal;
 
 
+--      Null_Token : Constant Token(ID => ID_For_Null_Token, Length => 0) :=
+--            (ID => ID_For_Null_Token, Length => 0, Value => (others => ' '));
 
    Function Print( Item : Token ) return Wide_Wide_String is
-     ( Natural'Wide_Wide_Image(Item.ID) & WWL.Colon & Lexeme(Item) );
-
+      ( Internal.Print_Number(Item.ID) & WWL.Colon & Lexeme(Item) )
+    with SPARK_Mode => Off;
 
 End Lexington;
