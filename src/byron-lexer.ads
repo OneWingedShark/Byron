@@ -13,6 +13,6 @@ Lexington.Token_Vector_Pkg.Vector;
 Function Byron.Lexer is new Byron.Generics.Pass(
    Input_Type            => Wide_Wide_String,
    Output_Type           => Lexington.Token_Vector_Pkg.Vector,
-   Output_Transformation => Byron.Internals.Lexer'Access,
+   Output_Transformation => Byron.Internals.Lexer.Process'Access,
    Translate             => Lexington.Aux.P0
   );
