@@ -5,26 +5,27 @@ With
 Byron.Internals.Types,
 Byron.Generics.Transformation,
 Lexington.Token_Vector_Pkg,
-Lexington.Aux.P20,
-Lexington.Aux.P19,
-Lexington.Aux.P18,
-Lexington.Aux.P17,
-Lexington.Aux.P16,
-Lexington.Aux.P15,
-Lexington.Aux.P14,
-Lexington.Aux.P13,
-Lexington.Aux.P12,
-Lexington.Aux.P11,
-Lexington.Aux.P10,
-Lexington.Aux.P9,
-Lexington.Aux.P8,
-Lexington.Aux.P7,
-Lexington.Aux.P6,
-Lexington.Aux.P5,
-Lexington.Aux.P4,
-Lexington.Aux.P3,
-Lexington.Aux.P2,
-Lexington.Aux.P1;
+Lexington.Aux.P20,	-- Check for invalid tokens.
+Lexington.Aux.P19,	-- Filters out text-artifact tokens.
+Lexington.Aux.P18,	-- Generates separators passable from the lexer.
+Lexington.Aux.P17,	-- Generates comments passable from the lexer.
+Lexington.Aux.P16,	-- Generates based floats.
+Lexington.Aux.P15,	-- Generates based integers.
+Lexington.Aux.P14,	-- Generates float literals, non-based.
+Lexington.Aux.P13,	-- Generates integer literals, non-based.
+Lexington.Aux.P12,	-- Character literals.
+Lexington.Aux.P11,	-- Generates Tick.
+Lexington.Aux.P10,	-- Generates Identifiers.
+Lexington.Aux.P9,	-- Generates Keywords.
+Lexington.Aux.P8,	-- Generates Comments.
+Lexington.Aux.P7,	-- Generates string literals.
+Lexington.Aux.P6,	-- Generates li_Character for ONLY apostrophe and quote.
+Lexington.Aux.P5,	-- Generates double-character delimiters.
+Lexington.Aux.P4,	-- Generates single-character delimeters.
+Lexington.Aux.P3,	-- Generates Comments on TEXT starting with --
+Lexington.Aux.P2,	-- Generates End_Of_Line.
+Lexington.Aux.P1;	-- Generates WHITESPACE.
+
 
 Use
 Byron.Internals.Types,
