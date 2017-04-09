@@ -2,12 +2,13 @@ Pragma Ada_2012;
 Pragma Assertion_Policy( Check );
 
 with
-Ada.Containers.Formal_Indefinite_Vectors;
-
-use
-Ada.Containers;
+Byron.Generics.Vector;
 
 Generic
-    with Package FIV is new Formal_Indefinite_Vectors(<>);
-    with Procedure Operation(Item : in FIV.Element_Type) is null;
-Procedure Byron.Generics.Iterator(Input : FIV.Vector);
+    with Package Vector_Package is new Byron.Generics.Vector(<>);
+    with Procedure Operation(Item : in Vector_Package.Element_Type) is null;
+Procedure Byron.Generics.Iterator(Input : Vector_Package.Vector)
+  with Pure, SPARK_Mode => On,
+  Global  =>  Null,
+  Depends => (Null => Input)
+;

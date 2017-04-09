@@ -4,8 +4,11 @@ Pragma Assertion_Policy( Check );
 Package Byron.Internals.SPARK.Pure_Types
 with Pure, Elaborate_Body, SPARK_Mode => On is
 
+    -- The String-type used within the internals of the compiler.
+    Subtype Internal_String is Wide_Wide_String;
+
     -- Represents a valid identifier.
-    Type Identifier is new Wide_Wide_String
+    Type Identifier is new Internal_String
       with Dynamic_Predicate =>
     -- Validation rules:
     -- #1 - Identifier cannot be the empty-string.
