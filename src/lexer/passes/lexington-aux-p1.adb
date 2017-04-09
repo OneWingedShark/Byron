@@ -2,6 +2,9 @@ Pragma Ada_2012;
 Pragma Assertion_Policy( Check );
 
 With
+Byron.Generics.Iterator,
+Lexington.Token_Vector_Pkg.Tie_In,
+
 Lexington.Search,
 Ada.Characters.Wide_Wide_Latin_1,
 Ada.Strings.Wide_Wide_Maps.Wide_Wide_Constants;
@@ -26,8 +29,9 @@ Procedure Lexington.Aux.P1(Data : in out Token_Vector_Pkg.Vector) is
      M.Wide_Wide_Constants.Graphic_Set and NOT_No_Break_Space and NOT_Space;
 
     Use Lexington.Aux.Token_Pkg;
-Begin
-   For Item of Data loop
+
+    Procedure Operation( Item : Token ) is
+    Begin
       if ID(Item) = Text then
          declare
             Start  : Positive;
@@ -76,7 +80,15 @@ Begin
       else
          Result.Append( Item );
       end if;
-   end loop;
+    End Operation;
+
+    Procedure Iterator is new Byron.Generics.Iterator(
+       Vector_Package => Lexington.Token_Vector_Pkg.Tie_In,
+       Operation      => Operation
+      );
+
+Begin
+   Iterator( Data );
 
    Data:= Result;
 End Lexington.Aux.P1;

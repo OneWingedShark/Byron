@@ -2,6 +2,8 @@ Pragma Ada_2012;
 Pragma Assertion_Policy( Check );
 
 With
+Byron.Generics.Updater,
+Lexington.Token_Vector_Pkg.Tie_In,
 Ada.Characters.Wide_Wide_Latin_1;
 
 -- Normalizes line endings.
@@ -10,13 +12,34 @@ Procedure Lexington.Aux.P2(Data : in out Token_Vector_Pkg.Vector) is
 
    Package L renames Ada.Characters.Wide_Wide_Latin_1;
 
+    -- Returns TRUE when the Item at Index is WHITESPACE *AND*
+    -- Matches the indicated termination-character. (CR is default.)
+   Function Is_EOL( Item  : Token;    CR : Boolean ) return Boolean;
    Function Is_EOL( Index : Positive; CR : Boolean ) return Boolean is
-      Item  : Token  renames Data(Index);
+      ( Is_EOL(Data(Index), CR) );
+
+
+   Function Is_EOL( Item : Token; CR : Boolean ) return Boolean is
       Value : Wide_Wide_String renames Lexeme(Item);
       WS    : constant Boolean := ID(Item) = Whitespace;
    Begin
       return WS and then Value(Value'First) = (if CR then L.CR else L.LF);
    End Is_EOL;
+
+
+    Procedure Handle_Unix_and_Apple( Item : in out Token ) is
+    Begin
+      if Is_EOL(Item, True) or Is_EOL(Item, False) then
+	    Item := Make_Token(End_of_Line, "");
+      end if;
+    End Handle_Unix_and_Apple;
+
+
+    Procedure Handle_LF is new Byron.Generics.Updater(
+       Vector_Package  => Lexington.Token_Vector_Pkg.Tie_In,
+       Replace_Element => Lexington.Token_Vector_Pkg.Replace_Element,
+       Operation       => Handle_Unix_and_Apple
+      );
 
    Index : Positive;
 Begin
@@ -40,13 +63,6 @@ Begin
    end loop;
 
    -- Unix and Apple (LF & CR)
-   For Index in Data.First_Index..Data.Last_Index loop
-      if Is_EOL(Index, True) or Is_EOL(Index,False) then
-         Data.Replace_Element(
-            Index    => Index,
-            New_Item => Make_Token(End_of_Line, "")
-           );
-      end if;
-   end loop;
+   Handle_LF( Data );
 
 End Lexington.Aux.P2;

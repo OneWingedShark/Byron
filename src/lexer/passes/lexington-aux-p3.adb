@@ -2,7 +2,8 @@ Pragma Ada_2012;
 Pragma Assertion_Policy( Check );
 
 With
-ada.Text_IO,
+Byron.Debugging.Functions,
+Ada.Text_IO,
 Ada.Containers,
 Ada.Characters.Latin_1,
 Ada.Strings.Wide_Wide_Unbounded;
@@ -11,6 +12,7 @@ Ada.Strings.Wide_Wide_Unbounded;
 Procedure Lexington.Aux.P3(Data : in out Token_Vector_Pkg.Vector) is
    use Ada.Strings.Wide_Wide_Unbounded, Lexington.Aux.Token_Pkg;
 
+   -- Returns True when the item is a textual-token that conforms to a comment.
    Function Is_Comment( Item : Token ) return Boolean is
       Value      : Wide_Wide_String renames Lexeme(Item);
       Textual    : constant Boolean := ID(Item) = TEXT;
@@ -22,13 +24,14 @@ Procedure Lexington.Aux.P3(Data : in out Token_Vector_Pkg.Vector) is
         (Value(First) = '-' and Value(Second) = '-');
    End Is_Comment;
 
+   -- Returns the text of an item, startinf at the third character.
    Function Non_Comment( Item : Token ) return Wide_Wide_String is
       Value : Wide_Wide_String renames Lexeme(Item);
       Third : constant Positive := Value'First+1;
       --renames Positive'Succ(Positive'Succ(Value'First));
       Last  : constant Natural:= Value'Last;
    Begin
-      Return Value(Third..Last);
+	Return Result : Constant Wide_Wide_String:= Value(Third..Last);
    End Non_Comment;
 
    Clear : Boolean:= True;
@@ -78,7 +81,6 @@ Procedure Lexington.Aux.P3(Data : in out Token_Vector_Pkg.Vector) is
    End Collect_Comment;
 
 
-   subtype Tmp_Range is Positive range Data.First_Index..Data.Last_Index;
 Begin
    Data.Iterate( Alter_Type'Access );
    Data.Iterate( Collect_Comment'Access );
