@@ -8,7 +8,7 @@ Generic
     with Package Vector_Package is new Byron.Generics.Vector(<>);
     with Procedure Operation(Item : in Vector_Package.Element_Type) is null;
 Procedure Byron.Generics.Iterator(Input : Vector_Package.Vector)
-  with Pure, SPARK_Mode => On,
+  with SPARK_Mode => On,
   Global  =>  Null,
   Depends => (Null => Input)
 ;

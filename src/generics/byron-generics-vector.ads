@@ -10,5 +10,5 @@ Generic
     with Function Element( Container : Vector;
 			   Index     : Index_Type
 			 ) return Element_Type is <>;
-Package Byron.Generics.Vector with Pure, Spark_Mode => On is
+Package Byron.Generics.Vector with Spark_Mode => On is
 End Byron.Generics.Vector;

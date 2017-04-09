@@ -13,7 +13,7 @@ Generic
      ) is <>;
     with Procedure Operation(Item : in out Vector_Package.Element_Type) is null;
 Procedure Byron.Generics.Updater(Input : in out Vector_Package.Vector)
-  with Pure, SPARK_Mode => On,
+  with SPARK_Mode => On,
   Global  =>  Null,
   Depends => (Input =>+ Input)
 ;
