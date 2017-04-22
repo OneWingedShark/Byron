@@ -1,3 +1,6 @@
+With
+Lexington.Token_Vector_Pkg;
+
 Generic
    Sequence  : ID_Sequence;
    Item_Type : Lexington.Aux.Token_ID;

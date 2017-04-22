@@ -2,22 +2,24 @@ Pragma Ada_2012;
 Pragma Assertion_Policy( Check );
 
 With
-Ada.Characters.Conversions,
-Ada.Strings.Equal_Case_Insensitive;
+Byron.Generics.Vector.Generic_Cursor,
+Lexington.Token_Vector_Pkg.Tie_In,
+Byron.Internals.SPARK.Pure_Types,
+Byron.Internals.SPARK.Functions
+;
 
 Procedure Lexington.Aux.P9(Data : in out Token_Vector_Pkg.Vector) is
-    Use Lexington.Aux.Token_Pkg;
+    Use Lexington.Aux.Token_Pkg, Byron.Internals.SPARK.Pure_Types;
 
    subtype Keyword is Token_ID range kw_Abort..kw_Xor;
-
-   Function To_String(Input : Wide_Wide_String; Sub : Character := ' ') return String
-      renames Ada.Characters.Conversions.To_String;
 
    Function As_Keyword( Input : Token_ID ) return Wide_Wide_String
      with Pre => Input in Keyword;
 
    Function As_Keyword( Input : Token_ID ) return Wide_Wide_String is
       Image : Wide_Wide_String renames Token_ID'Wide_Wide_Image(Input);
+
+      -- The offset here is to remove the KW_ prefix from the image.
       Start : Positive renames Positive'Succ(Positive'Succ(Positive'Succ(Image'First)));
       Stop  : constant Positive := Image'Last;
       Value : Wide_Wide_String := Image(Start..Stop);
@@ -28,12 +30,13 @@ Procedure Lexington.Aux.P9(Data : in out Token_Vector_Pkg.Vector) is
    Function Is_Keyword(Text  : Wide_Wide_String;
                        Which : out Token_ID
                       ) return Boolean is
-      -- Ada.Strings.Wide_Wide_Equal_Case_Insensitive is missing on this
-      -- installation; this is a TERRIBLE "mostly works" workaround.
-      Function "="(Left, Right : String) return Boolean
-         renames Ada.Strings.Equal_Case_Insensitive;
+
+      Function "="(Left, Right : Internal_String) return Boolean
+        renames Byron.Internals.SPARK.Functions.Equal_Case_Insensitive;
+
       Function "="(Left, Right : Wide_Wide_String) return Boolean is
-        (To_String(Left) = To_String(Right));
+        ( Internal_String(Left) = Internal_String(Right) );
+
    begin
       Which:= Nil;
       Return Result : Boolean := False do
@@ -45,19 +48,29 @@ Procedure Lexington.Aux.P9(Data : in out Token_Vector_Pkg.Vector) is
       end return;
    End Is_Keyword;
 
-   procedure Check_Keyword(Position : Token_Vector_Pkg.Cursor) is
-      Package TVP renames Token_Vector_Pkg;
-      Item    : Token renames TVP.Element( Position );
-      Value   : Wide_Wide_String renames Lexeme(Item);
-      KW      : Token_ID;
-   begin
-      if Is_Keyword(Text  => Value, Which => KW) then
-         Data.Replace_Element(Position,
-                              New_Item => Make_Token(KW, As_Keyword(KW))
-                             );
-      end if;
-   End Check_Keyword;
+    Package Cursors is
+      new Lexington.Token_Vector_Pkg.Tie_In.Generic_Cursor(Data);
+
+
+    Function Check_Keyword (Cursor : Cursors.Cursor'Class) return Token is
+	Package TVP renames Token_Vector_Pkg;
+	Item    : Token renames Cursor.Element;
+	Value   : Wide_Wide_String renames Lexeme(Item);
+	KW      : Token_ID;
+    begin
+	Return
+	  (if Is_Keyword(Text  => Value, Which => KW)
+	    then Make_Token(KW, As_Keyword(KW))
+	    else Item
+	  );
+    End Check_Keyword;
+
+    Procedure Update is new Cursors.Updater(
+       Operation       => Check_Keyword,
+       Replace_Element => Lexington.Token_Vector_Pkg.Replace_Element,
+       Forward         => True
+      );
 
 Begin
-   Data.Iterate(Check_Keyword'Access);
+    Update;
 End Lexington.Aux.P9;

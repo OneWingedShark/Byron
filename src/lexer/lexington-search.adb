@@ -4,7 +4,8 @@ Pragma Assertion_Policy( Check );
 with
 Lexington.Aux,
 Ada.Characters.Wide_Wide_Latin_1,
-Ada.Strings.Wide_Wide_Fixed;
+Ada.Strings;
+With Ada.Strings.Wide_Wide_Fixed; --*
 
 use
 Ada.Strings;

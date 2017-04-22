@@ -1,14 +1,39 @@
 Pragma Ada_2012;
 Pragma Assertion_Policy( Check );
 
+With
+Ada.Strings;
+
 Package Byron.Internals.SPARK.Pure_Types
 with Pure, Elaborate_Body, SPARK_Mode => On is
 
+    Type Internal_Character_Set(<>) is private;
+    Function Is_In( Ch : Wide_Wide_Character; Set : Internal_Character_Set )
+      return Boolean;
+
+
     -- The String-type used within the internals of the compiler.
-    Subtype Internal_String is Wide_Wide_String;
+    Type Internal_String is New Wide_Wide_String;
+    Function Index(
+       Source : Internal_String;
+       Set    : Internal_Character_Set;
+       Test   : Ada.Strings.Membership := Ada.Strings.Inside;
+       Going  : Ada.Strings.Direction  := Ada.Strings.Forward
+      ) return Natural;
+
+--     Function Index( Text : Wide_Wide_String;
+--                     From : Positive;
+--                     Set  : Ada.Strings.Wide_Wide_Maps.Wide_Wide_Character_Set
+--                   ) return Natural is
+--       (Ada.Strings.Wide_Wide_Fixed.Index(
+--                    From   => Natural'Min(From,Text'Last),
+--                    Source => Text,
+--                    Set    => Set,
+--                    Test   => Inside,
+--                    Going  => Forward
 
     -- Represents a valid identifier.
-    Type Identifier is new Internal_String
+    Subtype Identifier is Internal_String
       with Dynamic_Predicate =>
     -- Validation rules:
     -- #1 - Identifier cannot be the empty-string.
@@ -31,5 +56,11 @@ with Pure, Elaborate_Body, SPARK_Mode => On is
 		      )
 	;
 
+    Function Convert(Input : Wide_Wide_String) Return Internal_String;
+    Function Convert(Input : Internal_String ) Return Wide_Wide_String;
 Private
+
+    Type Internal_Character_Set is null record;
+
+
 End Byron.Internals.SPARK.Pure_Types;

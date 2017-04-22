@@ -6,16 +6,10 @@ Procedure Byron.Generics.Updater(Input : in out Vector_Package.Vector) is
       Vector_Package.First_Index(Input)..Vector_Package.Last_Index(Input);
 Begin
     For Index in Iteration_Range loop
-	declare
-	    Item : Vector_Package.Element_Type :=
-	      Vector_Package.Element(Input, Index);
-	begin
-	    Operation( Item );
-	    Replace_Element(
+	Replace_Element(
 		Container => Input,
 		Position  => Index,
-		New_Item  => Item
+		New_Item  => Operation( Vector_Package.Element(Input, Index) )
 	    );
-	end;
     End loop;
 End Byron.Generics.Updater;

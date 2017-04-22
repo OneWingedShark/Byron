@@ -11,7 +11,11 @@ Generic
        Position  :        Vector_Package.Index_Type;
        New_Item  :        Vector_Package.Element_Type
      ) is <>;
-    with Procedure Operation(Item : in out Vector_Package.Element_Type) is null;
+
+    -- We must use a function here instead of an in-out procedure because of the
+    -- possibility of the elements having discriminants.
+    with Function Operation(Item : Vector_Package.Element_Type)
+			    return Vector_Package.Element_Type;
 Procedure Byron.Generics.Updater(Input : in out Vector_Package.Vector)
   with SPARK_Mode => On,
   Global  =>  Null,

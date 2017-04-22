@@ -2,32 +2,43 @@ Pragma Ada_2012;
 Pragma Assertion_Policy( Check );
 
 with
-Ada.Containers.Vectors;
+Byron.Generics.Vector.Generic_Cursor,
+     Lexington.Token_Vector_Pkg.Tie_In;
 
 Procedure Lexington.Aux.P18(Data : in out Token_Vector_Pkg.Vector) is
     Use Lexington.Aux.Token_Pkg;
 
-   -- Converts all tokens of Which_ID to tokens of Target_ID.
-   Procedure Translate( Which_ID, Target_ID : Token_ID ) is
-      Procedure Translate (Position : Token_Vector_Pkg.Cursor) is
-         Package TVP renames Token_Vector_Pkg;
-         This       : Token renames TVP.Element( Position );
-         This_ID    : Token_ID renames Token_Pkg.ID(This);
-         This_Value : Wide_Wide_String renames Token_Pkg.Lexeme( This );
-      begin
-         if This_ID = Which_ID then
-            declare
-               New_Item : Token renames Make_Token(Target_ID, This_Value);
-            begin
-               Data.Replace_Element( Position, New_Item );
-            end;
-         end if;
-      exception
-         when Constraint_Error => Null;
-      End Translate;
-   Begin
-      Data.Iterate( Translate'Access );
-   End Translate;
+    Package Cursors is
+      new Lexington.Token_Vector_Pkg.Tie_In.Generic_Cursor(Data);
+
+    -- Converts all tokens of Which_ID to tokens of Target_ID.
+    Procedure Translate( Which_ID, Target_ID : Token_ID ) is
+
+	Function Translate (Position : Cursors.Cursor'Class) return Token is
+	    This       : Token renames Position.Element;
+	    This_ID    : Token_ID renames Token_Pkg.ID(This);
+	    This_Value : Wide_Wide_String renames Token_Pkg.Lexeme( This );
+
+	begin
+	    if This_ID = Which_ID then
+		declare
+		    New_Item : Token renames Make_Token(Target_ID, This_Value);
+		begin
+		    return New_Item;
+		end;
+	    end if;
+	    return This;
+	End Translate;
+
+	Procedure Update is new Cursors.Updater(
+	    Operation       => Translate,
+	    Replace_Element => Token_Vector_Pkg.Replace_Element
+	   );
+    Begin
+	Update;
+    End Translate;
+
+
 
 Begin
 

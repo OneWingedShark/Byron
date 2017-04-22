@@ -344,5 +344,5 @@ Package Lexington.Aux is
    Null_Token : constant Token;
 private
    Null_Token : Constant Token:=
-     (ID => ID_For_Null_Token, Length => 0, Value => "");
+   (ID => ID_For_Null_Token, Length => 0, Value => "");
 End Lexington.Aux;
