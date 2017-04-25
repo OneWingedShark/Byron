@@ -10,8 +10,6 @@ Byron.Lexer,
 Byron.Reader,
 Byron.Internals.Types,
 
-Byron.Debugging.Functions,
-
 -- Wide_Wide_Text_IO for debugging.
 Ada.Wide_Wide_Text_IO.Text_Streams;
 

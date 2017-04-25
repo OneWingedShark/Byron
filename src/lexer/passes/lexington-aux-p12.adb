@@ -2,20 +2,12 @@ Pragma Ada_2012;
 Pragma Assertion_Policy( Check );
 
 with
-Byron.Generics.Vector.Generic_Cursor,
-Byron.Generics.Updater,
-Lexington.Token_Vector_Pkg.Tie_In,
-Lexington.Token_Vector_Pkg.Delete_Item,
-
 Lexington.Aux.Constants.Delimiters,
 Ada.Characters.Conversions,
 Ada.Characters.Wide_Wide_Latin_1,
 Ada.Containers.Vectors;
 
---Character literals.
 Procedure Lexington.Aux.P12(Data : in out Token_Vector_Pkg.Vector) is
-    Use Token_Vector_Pkg;
-
    NUL : Wide_Wide_Character renames Ada.Characters.Wide_Wide_Latin_1.NUL;
 
    Package Delimiters renames Lexington.Aux.Constants.Delimiters;
@@ -24,8 +16,8 @@ Procedure Lexington.Aux.P12(Data : in out Token_Vector_Pkg.Vector) is
    Procedure Delete_Excess(Position : Index_Vector_Pkg.Cursor) is
       Value : Positive Renames Index_Vector_Pkg.Element( Position );
    begin
-       Delete_Item( Data, Value+1 );
-       Delete_Item( Data, Value+1 );
+      Data.Delete( Index => Value+1 );
+      Data.Delete( Index => Value+1 );
    End Delete_Excess;
 
    Indices : Index_Vector_Pkg.Vector;
@@ -63,9 +55,6 @@ Procedure Lexington.Aux.P12(Data : in out Token_Vector_Pkg.Vector) is
          Indices.Append( TVP.To_Index( Position ));
       end if;
    End Make_Literal;
-
-    Package Data_Cursor is new Lexington.Token_Vector_Pkg.Tie_In.Generic_Cursor( Data );
---      Procedure Update is new Data_Cursor.Updater( Token_Vector_Pkg.Cursor, Make_Literal );
 
 Begin
    Data.Iterate( Make_Literal'Access );

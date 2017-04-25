@@ -27,9 +27,12 @@ Procedure Lexington.Aux.P2(Data : in out Token_Vector_Pkg.Vector) is
    End Is_EOL;
 
 
-    Function Handle_Unix_and_Apple( Item : in Token ) Return Token is
-	(if Is_EOL(Item, True) or Is_EOL(Item, False)
-	 then Make_Token(End_of_Line, "") else Item);
+    Procedure Handle_Unix_and_Apple( Item : in out Token ) is
+    Begin
+      if Is_EOL(Item, True) or Is_EOL(Item, False) then
+	    Item := Make_Token(End_of_Line, "");
+      end if;
+    End Handle_Unix_and_Apple;
 
 
     Procedure Handle_LF is new Byron.Generics.Updater(

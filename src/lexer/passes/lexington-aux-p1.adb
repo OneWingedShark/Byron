@@ -3,7 +3,6 @@ Pragma Assertion_Policy( Check );
 
 With
 Byron.Generics.Iterator,
-Byron.Generics.Vector.Generic_Cursor,
 Lexington.Token_Vector_Pkg.Tie_In,
 
 Lexington.Search,
@@ -31,9 +30,7 @@ Procedure Lexington.Aux.P1(Data : in out Token_Vector_Pkg.Vector) is
 
     Use Lexington.Aux.Token_Pkg;
 
-
     Procedure Operation( Item : Token ) is
---  	Item : Token renames Position.Element;
     Begin
       if ID(Item) = Text then
          declare
@@ -89,7 +86,6 @@ Procedure Lexington.Aux.P1(Data : in out Token_Vector_Pkg.Vector) is
        Vector_Package => Lexington.Token_Vector_Pkg.Tie_In,
        Operation      => Operation
       );
-
 
 Begin
    Iterator( Data );

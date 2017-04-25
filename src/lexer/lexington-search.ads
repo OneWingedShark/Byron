@@ -4,8 +4,8 @@ Pragma Assertion_Policy( Check );
 With
 Lexington.Aux,
 Lexington.Token_Set_Pkg,
-Lexington.Token_Vector_Pkg, --*
-Ada.Strings.Wide_Wide_Maps; --*
+Lexington.Token_Vector_Pkg,
+Ada.Strings.Wide_Wide_Maps;
 
 Package Lexington.Search is
 
@@ -45,11 +45,11 @@ Package Lexington.Search is
                    On    : Wide_Wide_String
                  ) return Parts;
 
---  --     Function Arbitrary(
---  --                        Container : Token_Vector_Pkg.Vector;
---  --                        Index     : Positive;
---  --                        Items     : Token_Set_Pkg.Set
---  --                       ) return Run;
+--     Function Arbitrary(
+--                        Container : Token_Vector_Pkg.Vector;
+--                        Index     : Positive;
+--                        Items     : Token_Set_Pkg.Set
+--                       ) return Run;
 
    Type ID_Sequence is Array(Positive range <>) of Lexington.Aux.Token_ID;
 

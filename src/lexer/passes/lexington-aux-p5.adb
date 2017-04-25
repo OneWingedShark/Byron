@@ -2,10 +2,9 @@ Pragma Ada_2012;
 Pragma Assertion_Policy( Check );
 
 with
-Byron.Generics.Vector.Generic_Cursor,
+Byron.Generics.Vector,
 Byron.Generics.Iterator,
 Lexington.Aux.Constants.Delimiters,
-Lexington.Token_Vector_Pkg.Tie_In,
 Ada.Containers.Formal_Vectors;
 
 use
@@ -97,8 +96,6 @@ Procedure Lexington.Aux.P5(Data : in out Token_Vector_Pkg.Vector) is
        Element_Type => Positive
       );
     
-
-    Package Cursor is new Lexington.Token_Vector_Pkg.Tie_In.Generic_Cursor(Data);
     
     Procedure Delete_Data( Index : Positive ) renames Data.Delete;
     Procedure Delete_Data is new Byron.Generics.Iterator(Mem_Vec, Delete_Data);

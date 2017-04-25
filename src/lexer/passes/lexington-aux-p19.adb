@@ -2,24 +2,22 @@ Pragma Ada_2012;
 Pragma Assertion_Policy( Check );
 
 with
-Byron.Generics.Vector.Generic_Cursor,
-Lexington.Token_Vector_Pkg.Tie_In;
+Ada.Containers.Vectors;
 
 Procedure Lexington.Aux.P19(Data : in out Token_Vector_Pkg.Vector) is
-    Package Cursors is
-      new Lexington.Token_Vector_Pkg.Tie_In.Generic_Cursor(Data);
 
-    -- Filters out comments, whitespace, and end-of-Line tokens.
-    Function Filter( Cursor : Cursors.Cursor'Class ) return Boolean is
-      ( Token_Pkg.ID( Cursor.Element ) in Comment | Whitespace | End_of_Line );
-
-
-    procedure Filter is new Cursors.Deleter(
-       Operation => Filter,
-       Delete    => Token_Vector_Pkg.Delete,
-       Forward   => False
-      );
+   -- Filters out all tokens of the given ID.
+   Procedure Filter( ID : Token_ID ) is
+   begin
+      for Index in reverse Data.First_Index..Data.Last_Index loop
+         if Token_Pkg.ID(Data(Index)) = ID then
+            Data.Delete( Index );
+         end if;
+      end loop;
+   End Filter;
 
 Begin
-    Filter;
+   Filter( Comment     );
+   Filter( Whitespace  );
+   Filter( End_of_Line );
 End Lexington.Aux.P19;

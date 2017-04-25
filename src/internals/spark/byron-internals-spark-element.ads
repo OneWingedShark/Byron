@@ -15,10 +15,10 @@ Package Byron.Internals.SPARK.Element with Pure, SPARK_Mode => On is
 
 
 
-    -- Takse a transformation-procedure and returns an applying-function.
+    -- Takse a transformation-procedure and returns am applying-function.
     Generic
-	with Procedure Transform( Input : in out Element_Type ) is null;
-    Function Transformation     ( Input :        Element_Type ) Return Element_Type
+	with Procedure Transform(Input : in out Element_Type) is null;
+    Function Transformation( Input : Element_Type ) Return Element_Type
     with Pure_Function, Inline, Global => Null,
          Depends => (Transformation'Result => Input);
 
@@ -27,7 +27,7 @@ Package Byron.Internals.SPARK.Element with Pure, SPARK_Mode => On is
     Generic
 	with function F( Input : Element_Type ) Return Element_Type;
 	with function G( Input : Element_Type ) Return Element_Type;
-    Function Compose   ( Input : Element_Type ) Return Element_Type
+    Function Compose( Input : Element_Type ) Return Element_Type
     with Pure_Function, Inline, Global => Null,
          Depends => (Compose'Result => Input);
 

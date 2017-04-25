@@ -15,19 +15,15 @@ Lexington.Aux;
 Package Byron.Internals.Lexer is
     Package TVP renames Lexington.Token_Vector_Pkg;
 
-    -- Copy returns a copy of the input parameter.
+
     Function Copy( Input : Wide_Wide_String ) Return Wide_Wide_String;
-    Function Copy( Input : TVP.Vector       ) Return TVP.Vector;
+    Function Copy( Input : TVP.Vector ) Return TVP.Vector;
 
 
-    -- Instantiations of Internals.SPARK.Element on both wide-wide-strings and
-    -- the token-vector type; these are needed to build the transformations
-    -- which are used to process the tokens.
     Package String_Element is new SPARK.Element( Wide_Wide_String );
-    Package Lexer_Element  is new SPARK.Element( TVP.Vector       );
+    Package Lexer_Element  is new SPARK.Element( TVP.Vector );
 
 
-    -- Process is the actual function that processes the tokens.
     Procedure Process( Input : in out TVP.Vector );
 
 End Byron.Internals.Lexer;
