@@ -2,7 +2,7 @@ Pragma Ada_2012;
 Pragma Assertion_Policy( Check );
 
 With
-Ada.Containers.Formal_Vectors,
+--Ada.Containers.Formal_Vectors,
 Ada.Containers.Formal_Ordered_Sets,
 Ada.Containers.Formal_Ordered_Maps,
 Byron.Internals.SPARK.Pure_Types;
