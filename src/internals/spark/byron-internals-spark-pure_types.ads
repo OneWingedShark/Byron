@@ -4,6 +4,10 @@ Pragma Assertion_Policy( Check );
 Package Byron.Internals.SPARK.Pure_Types
 with Pure, Elaborate_Body, SPARK_Mode => On is
 
+--------------------------------------------------------------------------------
+-- INTERNAL STRINGS                                                           --
+--------------------------------------------------------------------------------
+
     -- The String-type used within the internals of the compiler.
     Subtype Internal_String is Wide_Wide_String;
 
@@ -30,6 +34,7 @@ with Pure, Elaborate_Body, SPARK_Mode => On is
 		         (if Identifier(Index) = '_' then Identifier(Positive'Succ(Index)) /= '_')
 		      )
 	;
+
 
 Private
 End Byron.Internals.SPARK.Pure_Types;

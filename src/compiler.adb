@@ -1,9 +1,13 @@
 pragma Wide_Character_Encoding(UTF8);
 
 with
--- Lexington dependencies; mainlt for printing/debugging.
+-- Lexington dependencies; mainly for printing/debugging.
 Lexington.Aux,
 Lexington.Token_Vector_Pkg,
+
+     Ada.Text_IO,
+     Byron.Internals.SPARK.Pure_Types.Vector,
+     Byron.Internals.SPARK.Pure_Types.Holders.Functions,
 
 -- Actual Byron dependencies.
 Byron.Lexer,
@@ -14,6 +18,16 @@ Byron.Internals.Types,
 Ada.Wide_Wide_Text_IO.Text_Streams;
 
 Procedure Compiler is
+
+    Package Test_Holder is new Byron.Internals.SPARK.Pure_Types.Holders
+      (String);
+    Package Holder_Functions is new Test_Holder.Functions;
+    Package Test_Vector is new Byron.Internals.SPARK.Pure_Types.Vector(
+--  	  "="          => ,
+--  	  Bounded      => ,
+	  Index_Type   => Positive,
+	  Element_Type => Integer
+	 );
 
    -- Returns the file "test.adb", already opened.
    Function Test_File return Ada.Wide_Wide_Text_IO.File_Type is
@@ -32,8 +46,21 @@ Procedure Compiler is
    Stream : aliased Ada.Wide_Wide_Text_IO.Text_Streams.Stream_Access:=
      Ada.Wide_Wide_Text_IO.Text_Streams.Stream(File);
 
-   Tokens : Lexington.Token_Vector_Pkg.Vector;
+    Tokens : Lexington.Token_Vector_Pkg.Vector;
+    Test_Data : Test_Vector.Vector(23);
+    Test_Hldr : Test_Holder.Holder:= Test_Holder.To_Holder( "Dave!" );
 Begin
+    Test_Vector.Append( Test_Data, 11 );
+    Test_Vector.Append( Test_Data, 08 );
+    Test_Vector.Append( Test_Data, 23 );
+    for Index in Test_Vector.First_Index(Test_Data)..Test_Vector.Last_Index(Test_Data) loop
+	Ada.Text_IO.Put( "Test_Data(" );
+	Ada.Text_IO.Put( Integer'Image(Index) );
+	Ada.Text_IO.Put( " ) =" );
+	Ada.Text_IO.Put_Line( Integer'Image(Test_Vector.Element(Test_Data,Index)) );
+    end loop;
+    Ada.Text_IO.Put_Line( Test_Holder.Element(Test_Hldr) );
+    Ada.Text_IO.Put_Line( Integer'Image(Test_Holder.Holder'Object_Size) );
 
 
    TOKENIZING:

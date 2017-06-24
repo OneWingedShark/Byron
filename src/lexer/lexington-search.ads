@@ -45,11 +45,11 @@ Package Lexington.Search is
                    On    : Wide_Wide_String
                  ) return Parts;
 
---     Function Arbitrary(
---                        Container : Token_Vector_Pkg.Vector;
---                        Index     : Positive;
---                        Items     : Token_Set_Pkg.Set
---                       ) return Run;
+--  *--     Function Arbitrary(
+--  *--                        Container : Token_Vector_Pkg.Vector;
+--  *--                        Index     : Positive;
+--  *--                        Items     : Token_Set_Pkg.Set
+--  *--                       ) return Run;
 
    Type ID_Sequence is Array(Positive range <>) of Lexington.Aux.Token_ID;
 

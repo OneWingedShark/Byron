@@ -8,8 +8,6 @@ Ada.Tags;
 Package Body Byron.Generics.Vector.Generic_Cursor is
     Use Ada.Tags;
 
-    Function Downward_Conversion( Item : Cursor'Class ) return Cursor is
-	( Cursor(Item) ) with Inline, Pure_Function;
 --      Function Downward_Conversion( Item : Cursor'Class ) return Element_Cursor
 --        with Inline, Pure_Function, Pre => Item'Tag = Element_Cursor'Tag;
 --
@@ -75,8 +73,8 @@ Package Body Byron.Generics.Vector.Generic_Cursor is
     Function Succ( Item : Cursor ) return Cursor renames Next;
     Function Pred( Item : Cursor ) return Cursor renames Previous;
 
-    Function Element( Item : Cursor ) return Element_Type is
-	(  Downward_Conversion(Item).Get_Element  );
+    Function Element( Item : Cursor ) return Element_Type
+	renames Get_Element;
 
 
     Function To_Cursor(Index : Index_Type) return Cursor is
@@ -132,7 +130,7 @@ Package Body Byron.Generics.Vector.Generic_Cursor is
 	if Cursor.Has_Element then
 	    Replace_Element(
 		     Container => Container,
-		     Position  => Downward_Conversion(Cursor).Index,
+		     Position  => Cursor.Index,
 		     New_Item  => New_Item
 		    );
 	end if;
@@ -143,7 +141,7 @@ Package Body Byron.Generics.Vector.Generic_Cursor is
 	if Item.Has_Element then
 	  Delete(
 	    Container => Container,
-	    Position  => Item.Index, --Downward_Conversion(Item).Index,
+	    Position  => Item.Index,
 	    Count     => Count_Type(Count)
 	   );
 
