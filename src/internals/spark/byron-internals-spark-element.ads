@@ -3,7 +3,8 @@ Pragma Assertion_Policy( Check );
 
 Generic
     Type Element_Type(<>) is limited private;
-    with Function Copy( Input : Element_Type ) return Element_Type is <> with Pure_Function;
+    with Function Copy( Input : Element_Type ) return Element_Type is <>
+         with Pure_Function;
 Package Byron.Internals.SPARK.Element with Pure, SPARK_Mode => On is
 
     -- Takes T1 and T2; applies them in order: T1, T2.
@@ -15,7 +16,7 @@ Package Byron.Internals.SPARK.Element with Pure, SPARK_Mode => On is
 
 
 
-    -- Takse a transformation-procedure and returns am applying-function.
+    -- Takes a transformation-procedure and returns an applying-function.
     Generic
 	with Procedure Transform(Input : in out Element_Type) is null;
     Function Transformation( Input : Element_Type ) Return Element_Type

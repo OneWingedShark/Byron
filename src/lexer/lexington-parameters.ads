@@ -27,7 +27,7 @@ Private
                   "Token_ID MUST be the same width as Natural."
                 );
 
-   Package L renames Ada.Characters.Wide_Wide_Latin_1;
+   Package Latin_1 renames Ada.Characters.Wide_Wide_Latin_1;
 
    Function Convert is new Unchecked_Conversion( Token_ID, Natural );
    Function Convert is new Unchecked_Conversion( Natural, Token_ID );
@@ -42,17 +42,17 @@ Private
 
 
    Space         : Wide_Wide_character renames Ada.Strings.Wide_Wide_Space;
-   Open_Paren    : Wide_Wide_Character renames L.Left_Parenthesis;
-   Close_Paren   : Wide_Wide_character renames L.Right_Parenthesis;
-   Open_Bracket  : Wide_Wide_character renames L.Left_Square_Bracket;
-   Close_Bracket : Wide_Wide_character renames L.Right_Square_Bracket;
-   CRLF          : Constant Wide_Wide_String := L.CR & L.LF;
-   TAB           : Constant Wide_Wide_String := (1 => L.HT);
+   Open_Paren    : Wide_Wide_Character renames Latin_1.Left_Parenthesis;
+   Close_Paren   : Wide_Wide_character renames Latin_1.Right_Parenthesis;
+   Open_Bracket  : Wide_Wide_character renames Latin_1.Left_Square_Bracket;
+   Close_Bracket : Wide_Wide_character renames Latin_1.Right_Square_Bracket;
+   CRLF          : Constant Wide_Wide_String := Latin_1.CR & Latin_1.LF;
+   TAB           : Constant Wide_Wide_String := (1 => Latin_1.HT);
 
    Function Print( Item : Token ) return Wide_Wide_String is
      ( Open_Paren & Natural'Wide_Wide_Image( Item.ID ) & Space & Close_Paren &
        TAB & Token_ID' Wide_Wide_Image(ID(Item)) & CRLF &
-       Tab & Open_Bracket & Lexeme(Item) & Close_Bracket
+       TAB & Open_Bracket & Lexeme(Item) & Close_Bracket
      );
 
     Function "+"        ( Item : Lexington.Token ) return Token is

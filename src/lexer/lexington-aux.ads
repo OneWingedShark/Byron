@@ -181,12 +181,26 @@ Package Lexington.Aux is
      )
    with Size => Natural'Size;
 
+   -- We divide the IDs into classes for both organization and grouping.
+   -- An offset is used to partition the groups.
    Class_Offset  : Constant := 128;
+
+   -- This group is used for error signialling.
    Error_Group   : Constant := Class_Offset * 0;
+
+   -- This is an intermediate token group containing separators.
    Seperators_1  : Constant := Class_Offset * 1; -- Will not be passed to the Parser.
+
+   -- This group is for separators.
    Seperators_2  : Constant := Class_Offset * 2; -- Might be passed to the Parser.
+
+   -- This group is for literals.
    Literal_Group : Constant := Class_Offset * 3;
+
+   -- This group is for keywords.
    Keywords      : Constant := Class_Offset * 4;
+
+   -- This group is for Identifiers.
    Ident_Group   : Constant := Class_Offset * 5;
 
    for Token_ID use
@@ -329,14 +343,18 @@ Package Lexington.Aux is
       Nil              => ID_For_Null_Token
      );
 
+   -- Groups the non-comment tokens.
    Subtype Noncomment is Token_ID range ss_Assign..Identifier;
 
+   -- Groups the comments which maybe emitted by the lexer.
    Subtype Emitable_Comments is Token_ID range Comment_Info..Comment_Code;
 
+   -- Groups all tokens which may be emitted.
    Subtype Emitable is Token_ID
    with Static_Predicate => Emitable in Noncomment | Emitable_Comments;
 
 
+   -- Overlays semantically meaningful IDs on the NATURAL-typed IDs.
    Package Token_Pkg is new Lexington.Parameters( Token_ID );
    Subtype Token is Token_Pkg.Token;
    use all type Token;

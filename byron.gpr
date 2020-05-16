@@ -6,7 +6,7 @@ project Byron is
    for Main use ("compiler.adb");
 
    package Ide is
-      for Vcs_Kind use "Git";
+      for Vcs_Kind use "git";
       for Documentation_Dir use "doc";
    end Ide;
 
@@ -32,8 +32,7 @@ project Byron is
    end Builder;
 
    package Compiler is
-      for Default_Switches ("ada") use ("-g", "-gnato", "-fstack-check", "-gnatE", "-gnata", "-gnat12", "-fcallgraph-info=su,da", "-O3", "-gnatn", "-funroll-loops", "-ftest-coverage", "-fprofile-arcs", "-ffunction-sections", 
-         "-fdata-sections");
+      for Default_Switches ("ada") use ("-g", "-gnato", "-fstack-check", "-gnata", "-gnat12", "-fcallgraph-info=su,da", "-O3", "-gnatn", "-funroll-loops", "-ftest-coverage", "-fprofile-arcs", "-ffunction-sections", "-fdata-sections");
    end Compiler;
 
    package Binder is

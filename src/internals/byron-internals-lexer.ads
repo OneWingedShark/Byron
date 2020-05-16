@@ -4,12 +4,11 @@ Pragma Assertion_Policy( Check );
 With
 --  Byron.Internals.Types,
 Byron.Internals.SPARK.Element,
-Byron.Generics.Transformation,
+-- Byron.Generics.Transformation,
 Lexington.Token_Vector_Pkg,
 Lexington.Aux;
 
 Use
---  Byron.Internals.Types,
 Lexington.Aux;
 
 Package Byron.Internals.Lexer is
@@ -43,16 +42,16 @@ End Byron.Internals.Lexer;
 --           P7'Access,		-- Generates string literals.
 --           P8'Access,		-- Generates Comments.
 --           P9'Access,		-- Generates Keywords.
---           P10'Access,		-- Generates Identifiers.
---           P11'Access,		-- Generates Tick.
---           P12'Access,		-- Character literals.
---           P13'Access,		-- Generates integer literals, non-based.
---           P14'Access,		-- Generates float literals, non-based.
---           P15'Access,		-- Generates based integers.
---           P16'Access,		-- Generates based floats.
---           P17'Access,		-- Generates comments passable from the lexer.
---           P18'Access,		-- Generates separaters passable from the lexer.
---           P19'Access,		-- Filters out text-artifact tokens.
+--           P10'Access,	-- Generates Identifiers.
+--           P11'Access,	-- Generates Tick.
+--           P12'Access,	-- Character literals.
+--           P13'Access,	-- Generates integer literals, non-based.
+--           P14'Access,	-- Generates float literals, non-based.
+--           P15'Access,	-- Generates based integers.
+--           P16'Access,	-- Generates based floats.
+--           P17'Access,	-- Generates comments passable from the lexer.
+--           P18'Access,	-- Generates separaters passable from the lexer.
+--           P19'Access,	-- Filters out text-artifact tokens.
 --           P20'Access		-- Check for invalid tokens.
 --                        )
 --    );

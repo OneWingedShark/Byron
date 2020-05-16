@@ -14,4 +14,9 @@ Package Byron.Internals.SPARK.Functions with Pure, SPARK_Mode => On is
       Global => Null, Depends => (Equal_Case_Insensitive'Result =>(Left, Right))
     ;
 
+    Function Equal_Case_Insensitive( Left, Right : Identifier )
+	return Boolean with Pure_Function,
+      Global => Null, Depends => (Equal_Case_Insensitive'Result =>(Left, Right))
+    ;
+
 End Byron.Internals.SPARK.Functions;

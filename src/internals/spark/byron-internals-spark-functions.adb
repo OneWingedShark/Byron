@@ -24,4 +24,18 @@ Package Body Byron.Internals.SPARK.Functions with SPARK_Mode => On is
 	  );
     End Equal_Case_Insensitive;
 
+    Function "="(Left, Right : Internal_String) return Boolean
+      renames Equal_Case_Insensitive with Pure_Function;
+
+
+    Function "+"(Right : Identifier) return Internal_String is
+	( Internal_String(Right) )
+	with Pure_Function, Global => Null, Inline,
+	Depends => ("+"'Result =>(Right));
+
+
+    Function Equal_Case_Insensitive( Left, Right : Identifier )
+	return Boolean is ((+Left) = (+Right));
+
+
 End Byron.Internals.SPARK.Functions;

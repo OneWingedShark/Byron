@@ -5,6 +5,7 @@ with
 Byron.Generics.Vector,
 Byron.Generics.Iterator,
 Lexington.Aux.Constants.Delimiters,
+Ada.Containers.Vectors,     
 Ada.Containers.Formal_Vectors;
 
 use
@@ -15,13 +16,13 @@ Procedure Lexington.Aux.P5(Data : in out Token_Vector_Pkg.Vector) is
    Package TP renames Token_Pkg;
    
    
-   Package Index_Vector_pkg is new Ada.Containers.Formal_Vectors(
+   Package Index_Vector_pkg is new Ada.Containers.Vectors(
       Index_Type   => Positive,
       Element_Type => Positive
      );
    
    Use Type Ada.Containers.Count_Type;
-   Mem : Index_Vector_pkg.Vector( 2*(1024**2) );
+   Mem : Index_Vector_pkg.Vector;--( 2*(1024**2) );
    
    procedure Make_Tokens(Position : VP.Cursor) is
       Element : Token     renames VP.Element( Position );
@@ -56,7 +57,7 @@ Procedure Lexington.Aux.P5(Data : in out Token_Vector_Pkg.Vector) is
             end case;
          When ch_Greater_Than =>
             case Next_ID is
-               when ch_Less_Than    => Replace_With(ss_Close_Label);	-- >>
+               when ch_Greater_Than => Replace_With(ss_Close_Label);	-- >>
                when ch_Equal        => Replace_With(ss_Greater_Equal);	-- >=
                when others  => Null;
             end case;

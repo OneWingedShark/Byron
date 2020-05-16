@@ -1,7 +1,7 @@
 pragma Wide_Character_Encoding(UTF8);
 
 with
--- Lexington dependencies; mainly for printing/debugging.
+--  Lexington dependencies; mainly for printing/debugging.
 Lexington.Aux,
 Lexington.Token_Vector_Pkg,
 
@@ -10,6 +10,7 @@ Lexington.Token_Vector_Pkg,
 -- Actual Byron dependencies.
 Byron.Lexer,
 Byron.Reader,
+Byron.Parser,
 Byron.Internals.Types,
 
 -- Wide_Wide_Text_IO for debugging.
@@ -37,6 +38,8 @@ Procedure Compiler is
 
     Tokens : Lexington.Token_Vector_Pkg.Vector;
 Begin
+
+
 
    TOKENIZING:
    Declare
